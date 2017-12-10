@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 
-
+/**
+ *
+ * @author alex
+ */
 
 public class Vector extends Point
 {
@@ -37,7 +40,9 @@ public class Vector extends Point
   {
       return magnitude;
   }
-  
+  /*
+  the 4 mutator methods below are such that the other related fields are changed accordingly.
+  */
   public void setBearing(double bearing)
   {
       this.bearing = bearing;
@@ -66,7 +71,17 @@ public class Vector extends Point
       this.bearing = Math.atan(y/x);
       
   }
-   
+   /*
+  vector addition and multiplication in rectanguolar form
+  */
+  public Vector addVector(Vector targetVec)
+  {
+      return new Vector(x + targetVec.getX(), y + targetVec.getY(), true);
+  }
   
+  public Vector subtractVector(Vector targetVec)
+  {
+      return new Vector(x - targetVec.getX(), y - targetVec.getY(), true);
+  }
 }
 
