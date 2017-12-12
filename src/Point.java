@@ -36,7 +36,21 @@ public class Point //Point class to describe a point in the simulation.
   {
     return this.y;
   }
+  //adds the coordinates of point other to this point
+  public Point add(Point other)
+  {
+      return new Point(x + other.getX(), y + other.getY());
+  }
+  //the two methods below are useful for determining field strength in field calculations
+  public double distanceFrom(Point other)
+  {
+      return Math.hypot(x - other.getX(), y = other.getY());
+  }
   
+  public double bearingFrom(Point other)
+  {
+      return Math.atan((other.getY()-y)/(other.getX() - x));
+  }
   @Override
   public String toString()
   {

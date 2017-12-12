@@ -72,14 +72,15 @@ public class Vector extends Point
       
   }
    /*
-  vector addition and multiplication in rectanguolar form
+  vector addition and multiplication in rectangular form
   */
-  public Vector addVector(Vector targetVec)
+  
+  public Vector add(Vector targetVec)
   {
       return new Vector(x + targetVec.getX(), y + targetVec.getY(), true);
   }
   
-  public Vector subtractVector(Vector targetVec)
+  public Vector subtract(Vector targetVec)
   {
       return new Vector(x - targetVec.getX(), y - targetVec.getY(), true);
   }
