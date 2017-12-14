@@ -13,47 +13,49 @@ import java.util.ArrayList;
  */
 public class FieldLine 
 {
-    private ArrayList<Vector> vectors;
+    private final ArrayList<Vector> vectors;
     private Point startPoint;
     private Point endPoint;
-    private boolean reversedDirection; //use only for rendering purposes, to determine actual direction, consequence of the constructor
+    private final boolean reversedDirection; //use only for rendering purposes, to determine actual direction, consequence of the constructor
     
-    public FieldLine(Point unitPoint)
+    public FieldLine(Point unitPoint, Particle[] particles, Point boundaries)
     //refer to field line construction algorithm criterion B
     {
-        /*
-         vectors = new ArrayList<Vector>;
+        
+         vectors = new ArrayList<>();
          this.startPoint = unitPoint;
-         double forceAngle = initAngle(); calculates the initial force bearing based on the fields
-         Vector testVector = new Vector(single unit of measure, forceAngle, false);
-         if (testVector collides) 
+         double forceAngle = particles[0].getFieldStrength(unitPoint).add(particles[1].getFieldStrength(unitPoint)).getBearing(); //calculates the initial force bearing based on the fields
+         Vector testVector = new Vector(3, forceAngle, false);
+         this.reversedDirection = unitPoint.add(testVector).distanceFrom(particles[0].getPosition()) < particles[0].getRadius(); 
+            //tests if the vector collides with the origin particle or not, which is a check on whether or not to reverse the direction
+         if (reversedDirection) 
          { //reverses the angle if the vector immediately collides, prevents premature end
-             reversedDirection = true;
+             
              forceAngle += 180.0;
              Vector line = new Vector(0,0, false);
-             while (startPoint.add(line) in bounds)
+             while (unitPoint.add(line).distanceFrom(particles[0].getPosition()) >= particles[0].getRadius() && unitPoint.add(line).distanceFrom(particles[1].getPosition()) >= particles[1].getRadius() && unitPoint.add(line).getX() < boundaries.getX() && unitPoint.add(line).getY() < boundaries.getY())
              {
-                line.setMagnitude(single unit of measure);
+                line.setMagnitude(3);
                 line.setBearing(forceAngle);
                 vectors.add(line);
-                unitPoint.add(new Point(line.getX(),line.getY()));
-                forceAngle = initAngle()+180.0; calculates the force bearing based on the fields
+                unitPoint = unitPoint.add(new Point(line.getX(),line.getY()));
+                forceAngle = particles[0].getFieldStrength(unitPoint).add(particles[1].getFieldStrength(unitPoint)).getBearing() + 180.0; //calculates the force bearing based on the fields
              }
              this.endPoint = unitPoint;
          } else {
             Vector line = new Vector(0,0, false);
-            reversedDirection = false;
-             while (startPoint.add(line) in bounds)
+            
+             while (unitPoint.add(line).distanceFrom(particles[0].getPosition()) >= particles[0].getRadius() && unitPoint.add(line).distanceFrom(particles[1].getPosition()) >= particles[1].getRadius() && unitPoint.add(line).getX() < boundaries.getX() && unitPoint.add(line).getY() < boundaries.getY())
              {
-                line.setMagnitude(single unit of measure);
+                line.setMagnitude(3);
                 line.setBearing(forceAngle);
                 vectors.add(line);
                 unitPoint.add(new Point(line.getX(),line.getY()));
-                forceAngle = initAngle(); calculates the force bearing based on the fields
+                forceAngle = particles[0].getFieldStrength(unitPoint).add(particles[1].getFieldStrength(unitPoint)).getBearing(); //calculates the force bearing based on the fields
              }
              this.endPoint = unitPoint;
          }
-        */
+        
     }
     
     public void addVector(Vector newVector) 

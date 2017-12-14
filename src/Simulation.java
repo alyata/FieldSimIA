@@ -113,16 +113,16 @@ public class Simulation
     
     public void addParticle(Particle newParticle)
     {
-        if (particleCount < 2) 
+        if (particleCount < 2 && newParticle.getPosition().getX() < boundaries.getX() && newParticle.getPosition().getY() < boundaries.getY()) 
         {
-            particles[particleCount - 1] = newParticle;
+            particles[particleCount] = newParticle;
             particleCount++;
         }
     }
     
-    public void addFieldLine(FieldLine newFieldLine)
+    public void addFieldLine(Point startPoint)
     {
-        field.add(newFieldLine);
+        field.add(new FieldLine(startPoint, particles, boundaries));
     }
 
     

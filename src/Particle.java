@@ -10,25 +10,33 @@
  */
 public class Particle 
 {
+
+    
     private String name;
     private Vector velocity;
     private Vector force;
     private double mass;
     private double charge;
+    private double radius;
     private Point position; //absolute position of the particle within the simulation
     public static final double COULOMB = 8987551787.3681764; //coulomb's constant for use in field calculations
     
-    public Particle(String name, double mass, double charge, Point position)
+    public Particle(String name, double mass, double charge, double radius, Point position)
     {
         this.name = name;
         this.charge = charge;
         this.mass = mass;
+        this.radius = radius;
         //initial velocity and force are set to 0, as is the common case when a new particle enters the simulation
         velocity = new Vector(0,0,true);
         force = new Vector(0,0,true);
         this.position = position;
     }
-    
+
+    public double getRadius() {
+        return radius;
+    }
+
     public String getName()
     {
         return name;
@@ -88,6 +96,12 @@ public class Particle
     {
         this.position = position;
     }
+    
+    public void setRadius(double radius) 
+    {
+        this.radius = radius;
+    }
+    
     //returns the field strength caused by the particle at an absolute point using coulomb's law, useful in determining the vectors within a fieldline.
     public Vector getFieldStrength(Point testPosition)
     {

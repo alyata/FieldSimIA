@@ -22,7 +22,7 @@ public class Vector extends Point
     super(x,y);
     if (rectangular) {
         this.magnitude = Math.hypot(x,y);
-        this.bearing = Math.atan(y/x);
+        this.bearing = Math.atan2(y, x);
     } else {
         this.magnitude = x;
         this.bearing = y;
@@ -61,14 +61,14 @@ public class Vector extends Point
   {
       this.x = x;
       this.magnitude = Math.hypot(x, y);
-      this.bearing = Math.atan(y/x);
+      this.bearing = Math.atan2(y, x);
   }
   @Override
   public void setY(double y)
   {
       this.y = y;
       this.magnitude = Math.hypot(x,y);
-      this.bearing = Math.atan(y/x);
+      this.bearing = Math.atan2(y, x);
       
   }
    /*
@@ -84,5 +84,9 @@ public class Vector extends Point
   {
       return new Vector(x - targetVec.getX(), y - targetVec.getY(), true);
   }
+  @Override
+  public String toString()
+  {
+      return "(" + this.magnitude + ", " + this.bearing + ")";
+  }
 }
-
