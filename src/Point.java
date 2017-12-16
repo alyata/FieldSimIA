@@ -49,7 +49,8 @@ public class Point //Point class to describe a point in the simulation.
   
   public double bearingFrom(Point other)
   {
-      return Math.atan((other.getY()-y)/(other.getX() - x));
+      double returned = Math.atan2(y-(other.getY()), (x - other.getX()));
+      return returned;
   }
   @Override
   public String toString()

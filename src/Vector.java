@@ -87,6 +87,6 @@ public class Vector extends Point
   @Override
   public String toString()
   {
-      return "(" + this.magnitude + ", " + this.bearing + ")";
+      return "(" + this.x + ", " + this.y + ")";
   }
 }

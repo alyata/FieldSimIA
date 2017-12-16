@@ -113,7 +113,8 @@ public class Simulation
     
     public void addParticle(Particle newParticle)
     {
-        if (particleCount < 2 && newParticle.getPosition().getX() < boundaries.getX() && newParticle.getPosition().getY() < boundaries.getY()) 
+        if (particleCount < 2 && newParticle.getPosition().getX() < boundaries.getX() && newParticle.getPosition().getY() < boundaries.getY())
+            //checks if there are less than 2 particles and if the intended position is within bounds
         {
             particles[particleCount] = newParticle;
             particleCount++;

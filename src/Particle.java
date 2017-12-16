@@ -105,12 +105,12 @@ public class Particle
     //returns the field strength caused by the particle at an absolute point using coulomb's law, useful in determining the vectors within a fieldline.
     public Vector getFieldStrength(Point testPosition)
     {
-        double bearing = testPosition.bearingFrom(position);
+        double bearing = position.bearingFrom(testPosition);
         if (charge > 0) //tests for the direction of the field, if positive the direction is away, hence the reverse direction
         {
-            bearing += 180;
+            bearing = bearing + Math.PI;
         }
-        return new Vector(COULOMB * charge/position.distanceFrom(testPosition), bearing, false);
+        return new Vector(COULOMB * charge/Math.pow(position.distanceFrom(testPosition), 2), bearing, false);
     }
 }
 
