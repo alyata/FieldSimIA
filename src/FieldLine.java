@@ -32,7 +32,7 @@ public class FieldLine
          { //reverses the angle if the vector immediately collides, prevents premature end
              
              forceAngle = forceAngle + Math.PI;
-             Vector line = new Vector(3,0, false);
+             Vector line = new Vector(1,0, false);
              while (unitPoint.distanceFrom(particles[0].getPosition()) >= particles[0].getRadius() && unitPoint.distanceFrom(particles[1].getPosition()) >= particles[1].getRadius() && unitPoint.getX() < boundaries.getX() && unitPoint.getY() < boundaries.getY())
              {
                 
@@ -44,7 +44,7 @@ public class FieldLine
              }
              this.endPoint = unitPoint;
          } else {
-            Vector line = new Vector(3,0, false);
+            Vector line = new Vector(1,0, false);
             
              while (unitPoint.distanceFrom(particles[0].getPosition()) >= particles[0].getRadius() && unitPoint.distanceFrom(particles[1].getPosition()) >= particles[1].getRadius() && unitPoint.getX() < boundaries.getX() && unitPoint.getY() < boundaries.getY())
              {
@@ -53,7 +53,8 @@ public class FieldLine
                 vectors.add(new Vector(line.getX(), line.getY(), true));
                 System.out.println(unitPoint.add(new Vector(line.getX(), line.getY(), true))); //debugging purposes only REMOVE AFTERWARDS
                 unitPoint = unitPoint.add(line);
-                forceAngle = particles[0].getFieldStrength(unitPoint).add(particles[1].getFieldStrength(unitPoint)).getBearing(); //calculates the force bearing based on the fields
+                Vector test = particles[1].getFieldStrength(unitPoint);//debugging purposes only
+                forceAngle = particles[0].getFieldStrength(unitPoint).add(test).getBearing(); //calculates the force bearing based on the fields
              }
              this.endPoint = unitPoint;
          }

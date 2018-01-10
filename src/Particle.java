@@ -110,7 +110,7 @@ public class Particle
         {
             bearing = bearing + Math.PI;
         }
-        return new Vector(COULOMB * charge/Math.pow(position.distanceFrom(testPosition), 2), bearing, false);
+        return new Vector(COULOMB * Math.abs(charge)/Math.pow(position.distanceFrom(testPosition), 2), bearing, false);
     }
 }
 

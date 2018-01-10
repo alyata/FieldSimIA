@@ -24,14 +24,8 @@ public class Test {
             System.out.println(sample.toString());
         }
         
-        try {
-            //open up standard input
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            String s = br.readLine();
-            } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
+        
+
         
     }
     
